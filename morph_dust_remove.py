@@ -41,7 +41,7 @@ def dust_remove(file, thres, sav=None):
 
 
 if __name__=='__main__':
-    file= '/home/janmejoyarch/public_html/files/SUIT_images/SUT_UNP_9999_999999_Lev1.0_2024-05-14T06.41.24.950_4081NB03.fits'
-    thres=2000
+    file= '/home/janmejoyarch/sftp_drive/suit_data/level1fits/2024/05/14/engg4/SUT_UNP_9999_999999_Lev1.0_2024-05-14T06.35.33.982_4081NB05.fits'
+    thres=3500
     sav= '/home/janmejoyarch/Desktop/test.fits'
-    dust_remove(file, thres, sav)
+    dust_remove(file, thres)
