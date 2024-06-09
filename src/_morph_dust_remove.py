@@ -39,7 +39,6 @@ def dust_remove(file, thres, sav=None):
         fits.writeto(sav, data_new, overwrite=True)
         print(f'File written to \n{sav}')
 
-
 if __name__=='__main__':
     file= '/home/janmejoyarch/sftp_drive/suit_data/level1fits/2024/05/14/engg4/SUT_UNP_9999_999999_Lev1.0_2024-05-14T06.35.33.982_4081NB05.fits'
     thres=3500

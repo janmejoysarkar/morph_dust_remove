@@ -17,7 +17,6 @@ from skimage.morphology import dilation, disk
 from scipy.ndimage import median_filter
 from concurrent.futures import ProcessPoolExecutor
 
-
 def lighten(image_list):
     '''
     Lighten blend
@@ -31,7 +30,7 @@ def lighten(image_list):
                     lighten_blend[i,j]=image[i,j]
     return(lighten_blend)
 
-def dust_mask():
+def dust_mask(): #make a mask of all dust from PRNU image
     prnu_path= os.path.expanduser('~/Dropbox/Janmejoy_SUIT_Dropbox/flat_field/LED/onboard_PRNU_project/')
     prnu1= fits.open(prnu_path+'data/processed/2024-02-23_prnu_355_ff.fits')[0].data
     prnu2= fits.open(prnu_path+'data/processed/2024-02-23_prnu_355_aa.fits')[0].data
@@ -40,7 +39,7 @@ def dust_mask():
     mask= dilation(blurred<0.99, disk(3))
     return (mask)
 
-def filter_image(image_path):
+def filter_image(image_path): #main process to remove dust spots
     hdu= fits.open(image_path)[0]
     data, header= hdu.data, hdu.header
     mask= dust_mask()
@@ -52,9 +51,10 @@ def filter_image(image_path):
         sav_hdu= fits.PrimaryHDU(filtered, header=header)
         sav_hdu.writeto(os.path.join(sav, image_path[-64:]), overwrite=True)
     print(f'{image_path[-64:]} Completed')
+    return(filtered)
         
 if __name__=='__main__':
-    save=True
+    save=False
     img_folder='/home/janmejoyarch/sftp_drive/suit_data/level1.1fits/2024/03/28/engg4/'
     file_list=['SUT_C24_0262_000314_Lev1.0_2024-03-28T07.00.12.738_4081NB04.fits', 
                 'SUT_C24_0262_000314_Lev1.0_2024-03-28T07.00.52.714_4081NB03.fits',
@@ -69,5 +69,6 @@ if __name__=='__main__':
                 'SUT_C24_0262_000314_Lev1.0_2024-03-28T07.06.37.431_4081BB03.fits']
     
     path_list= [os.path.join(img_folder, file) for file in file_list]
+
     with ProcessPoolExecutor() as executor:
         executor.map(filter_image, path_list)
