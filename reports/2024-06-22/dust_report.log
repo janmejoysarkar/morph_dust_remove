@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex 2024.6.4)  23 JUN 2024 02:00
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex 2024.6.4)  28 JUN 2024 23:05
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -460,13 +460,13 @@ Package hyperref Info: Link coloring OFF on input line 12.
 \@outlinefile=\write3
 \openout3 = `dust_report.out'.
 
-<pics/dust_example.png, id=12, 1583.9175pt x 734.745pt>
+<pics/dust_example.png, id=24, 1583.9175pt x 734.745pt>
 File: pics/dust_example.png Graphic file (type png)
 <use pics/dust_example.png>
 Package pdftex.def Info: pics/dust_example.png  used on input line 21.
 (pdftex.def)             Requested size: 298.75264pt x 138.58276pt.
 LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 2
-8.
+9.
 
 (/usr/share/texmf-dist/tex/latex/psnfss/ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
@@ -474,12 +474,12 @@ File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 onts/enc/dvips/base/8r.enc}
 
  <./pics/dust_example.png>]
-LaTeX Font Info:    Trying to load font information for U+msa on input line 36.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 37.
 
  (/usr/share/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 36.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 37.
 
 
 (/usr/share/texmf-dist/tex/latex/amsfonts/umsb.fd
@@ -489,32 +489,25 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
  ***********
-
-
-Package rerunfilecheck Warning: File `dust_report.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `dust_report.out':
-(rerunfilecheck)             Before: 62D07FC0BB942DDDFE54E3079DFF4542;201
-(rerunfilecheck)             After:  E448CE7ECEEE948AD614238A180EC3BC;360.
+Package rerunfilecheck Info: File `dust_report.out' has not changed.
+(rerunfilecheck)             Checksum: 6D11552498A460F4C39D6E2F54EC0315;815.
  ) 
 Here is how much of TeX's memory you used:
- 11504 strings out of 476076
- 176622 string characters out of 5793776
- 1936187 words of memory out of 5000000
- 33440 multiletter control sequences out of 15000+600000
- 570969 words of font info for 61 fonts, out of 8000000 for 9000
+ 11512 strings out of 476076
+ 176725 string characters out of 5793776
+ 1935187 words of memory out of 5000000
+ 33445 multiletter control sequences out of 15000+600000
+ 575416 words of font info for 64 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 70i,8n,79p,548b,518s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 70i,8n,79p,628b,516s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/font
 s/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/urw/ti
 mes/utmb8a.pfb></usr/share/texmf-dist/fonts/type1/urw/times/utmr8a.pfb>
-Output written on dust_report.pdf (2 pages, 450834 bytes).
+Output written on dust_report.pdf (2 pages, 453174 bytes).
 PDF statistics:
- 60 PDF objects out of 1000 (max. 8388607)
- 43 compressed objects within 1 object stream
- 7 named destinations out of 1000 (max. 500000)
- 22 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 71 PDF objects out of 1000 (max. 8388607)
+ 54 compressed objects within 1 object stream
+ 9 named destinations out of 1000 (max. 500000)
+ 46 words of extra memory for PDF output out of 10000 (max. 10000000)
 

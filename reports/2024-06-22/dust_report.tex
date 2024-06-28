@@ -24,6 +24,7 @@
 	\end{figure}
 	
 	\section{Methodology}
+	\subsection{Dust Mask Method}
 	\begin{itemize}
 		\item SUIT LED image is used to generate a mask of all dust particles.
 		\item The large scale illumination pattern of the LED images is removed using multiscale structure isolation methods, similar to that used for generating PRNU profiles for SUIT CCD.
@@ -39,7 +40,11 @@
 		\end{align*}
 		\item Figure \ref{fig:dustexample} shows an example of the dust filtering.
 	\end{itemize}
+	\subsection{Automated dust identification and removal method}
 	
 	\section{Results and Conclusion}
+	\begin{itemize}
+		\item The Dust Mask method is effective in removing dust spots from the entire field of view. It is effective in isolating dust structures and filtering them individually. However, the dust pattern on the CCD may change with time. While the closest LED image can give us the dust pattern on the CCD, it is not representative of the dust pattern at a given date. Therefore, there can be situations where some dust spots on an image of the Sun is not corrected as well as, some regions on the Sun could be over corrected, because a dust spot is seen in the dust map but not in the Sun image.
+	\end{itemize}
 	
 \end{document}
