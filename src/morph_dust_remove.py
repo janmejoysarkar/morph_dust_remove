@@ -4,6 +4,8 @@
 Created on Fri May 17 12:47:14 2024
 Dust removal with morphology.
 2024-06-30: Dilation Radius reduced from 10 px to 6 px. Screenshots taken for report.
+2024-07-03: added provision to save the replaced pixels as a separate image.
+Changed mask generation kernel size from 6 px to 3 px.
 @author: janmejoyarch
 """
 import os, glob
@@ -39,14 +41,17 @@ def dust_remove(file, thres, plot=None, sav=None):
     h,w= data.shape 
     col, row, radius= hdu.header['CRPIX1'], hdu.header['CRPIX2'], hdu.header['R_SUN']-50
     mask= np.ones((h,w))*create_circular_mask(h, w, col, row, radius)
-    particle_mask= dilation(mask*(data<thres), disk(6))
+    particle_mask= dilation(mask*(data<thres), disk(3))
     filtered=dilation(erosion(data, disk(1)), disk(6))*particle_mask
+    dust_grains= data*particle_mask
     filtered_image= (data*np.logical_not(particle_mask))+filtered
     data_crop, filtered_crop= data[y-s:y+s, x-s:x+s], filtered_image[y-s:y+s, x-s:x+s]
     if plot: plotter(data_crop, filtered_crop)
     if sav: 
         sav_hdu=fits.PrimaryHDU(filtered_image, header=header)
         sav_hdu.writeto(sav_path, overwrite=True)
+        dust_hdu= fits.PrimaryHDU(dust_grains, header=header)
+        dust_hdu.writeto(os.path.join(os.path.dirname(sav_path), f'dust_profile_{os.path.basename(sav_path)}'), overwrite=True)
         print(f'File written to \n{sav}')
     
 
@@ -58,7 +63,7 @@ if __name__=='__main__':
     sav_path= os.path.join(project_path, 'products', os.path.basename(file))
     x,y,s= 1366, 1393, 30
 
-    dust_remove(file, thres, plot= True, sav=False)
+    dust_remove(file, thres, plot= True, sav=True)
     
 
     
