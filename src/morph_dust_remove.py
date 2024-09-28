@@ -39,9 +39,14 @@ def dust_remove(file, thres, plot=None, sav=None):
     data= hdu.data
     header=hdu.header
     h,w= data.shape 
-    col, row, radius= hdu.header['CRPIX1'], hdu.header['CRPIX2'], hdu.header['R_SUN']-50
-    mask= np.ones((h,w))*create_circular_mask(h, w, col, row, radius)
-    particle_mask= dilation(mask*(data<thres), disk(3))
+    required_keys= ['CRPIX1', 'CRPIX2', 'R_SUN']
+    missing_keys= [key for key in required_keys if key not in header]
+    if missing_keys:
+        particle_mask= dilation(data<thres, disk(3))
+    else:
+        col, row, radius= hdu.header['CRPIX1'], hdu.header['CRPIX2'], hdu.header['R_SUN']-50
+        mask= np.ones((h,w))*create_circular_mask(h, w, col, row, radius)
+        particle_mask= dilation(mask*(data<thres), disk(3))
     filtered=dilation(erosion(data, disk(1)), disk(6))*particle_mask
     dust_grains= data*particle_mask
     filtered_image= (data*np.logical_not(particle_mask))+filtered
@@ -58,12 +63,12 @@ def dust_remove(file, thres, plot=None, sav=None):
 if __name__=='__main__':
     project_path= os.path.expanduser('~/Dropbox/Janmejoy_SUIT_Dropbox/flat_field/morphological_dust_removal_project/')
     filelist= glob.glob(os.path.join(project_path, 'data/raw/*'))
-    file= filelist[0]
-    thres=10000
+    file= filelist[1]
+    thres=0.97
     sav_path= os.path.join(project_path, 'products', os.path.basename(file))
     x,y,s= 1366, 1393, 30
 
-    dust_remove(file, thres, plot= True, sav=True)
+    dust_remove(file, thres, plot= True, sav=False)
     
 
     
