@@ -59,19 +59,11 @@ def dust_remove(file, thres, plot=None, sav=None):
         dust_hdu.writeto(os.path.join(os.path.dirname(sav_path), f'dust_profile_{os.path.basename(sav_path)}'), overwrite=True)
         print(f'File written to \n{sav}')
     
-
 if __name__=='__main__':
-    project_path= os.path.expanduser('~/Dropbox/Janmejoy_SUIT_Dropbox/flat_field/morphological_dust_removal_project/')
+    project_path= os.path.abspath("..")
     filelist= glob.glob(os.path.join(project_path, 'data/raw/*'))
-    file= filelist[1]
+    file= filelist[0]
     thres=0.97
     sav_path= os.path.join(project_path, 'products', os.path.basename(file))
     x,y,s= 1366, 1393, 30
-
     dust_remove(file, thres, plot= True, sav=False)
-    
-
-    
-    
-    
-    
